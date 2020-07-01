@@ -4,18 +4,31 @@
 @using System;
 @using System.Data.SqlClient;
 @{
+    @model List<EmployeeDirectory.Controllers.MethodsController.EmployeeDetails>
 
+<h1>Employee Details</h1>
+
+<table border="2" width="100%">
+    <tr>
+        <th>Employee ID </th>
+        <th>Employee Name </th>
+        <th>Job Title </th>
+        <th>Workplace </th>
+        <th>Email </th>
+        <th>Phone Number </th>
+    </tr>
+    @foreach (var employeeDetails in Model)
+    {
+<tr>
+    <td>@employeeDetails.EmployeeID</td>
+    <td>@employeeDetails.EmployeeName</td>
+    <td>@employeeDetails.JobTitle</td>
+    <td>@employeeDetails.WorkPlace</td>
+    <td>@employeeDetails.Email</td>
+    <td>@employeeDetails.PhoneNumber</td>
+</tr>
+    }
+</table>
 }
 
-    <h1>Employee Details</h1>
-    <table border="1" width="100%">
-        <tr>
-            <th>Employee ID</th>
-            <th>Employee Name</th>
-            <th>Job Title</th>
-            <th>Workplace</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-        </tr>
-    </table>
-<table>@ViewData["SelectAll"]</table>
+
