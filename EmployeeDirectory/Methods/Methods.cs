@@ -1,8 +1,8 @@
-//using System;
-//using System.Data.SqlClient;
+// using System;
+// using System.Data.SqlClient;
 
-//namespace EmployeeDirectory
-//{
+// namespace EmployeeDirectory
+// {
 //    public class Methods
 //    {
 
