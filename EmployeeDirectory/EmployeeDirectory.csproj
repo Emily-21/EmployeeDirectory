@@ -6,8 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Methods\" />
+    <Folder Include="Views\Methods\" />
   </ItemGroup>
 </Project>
