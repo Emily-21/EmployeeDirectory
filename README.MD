@@ -9,6 +9,6 @@
 - [x] Populate the database with dummy data ( employees)
 
 - Day 2:
-- [x] Create Methods for Adding, Editing and Deleting Employees (To HTML)
+- [x] Showing all Employee Details (To HTML)
 - [x] Display data in a table format
 
