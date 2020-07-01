@@ -69,7 +69,7 @@ namespace EmployeeDirectory
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
                 builder.DataSource = "localhost,1433";
                 builder.UserID = "sa";
-                builder.Password = "Puerr0r@diactiv0";
+                builder.Password = "<YourStrong@Passw0rd>";
                 builder.InitialCatalog = "StaffDirectory";
 
                 //what would you like to send to SQL?
@@ -149,7 +149,7 @@ namespace EmployeeDirectory
                 builder.InitialCatalog = "StaffDirectory";
 
                 //what would you like to send to SQL?
-                string DELETE = "DELETE FROM StaffModel WHERE MovieID = 4";
+                string DELETE = "DELETE FROM StaffModel WHERE EmployeeID = 11";
 
                 // writing to the console before the connection is attempted
                 Console.WriteLine("Connecting to SQL Server.");

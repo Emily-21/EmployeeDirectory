@@ -16,10 +16,10 @@ namespace EmployeeDirectory
             //CreateHostBuilder(args).Build().Run();
 
             Methods select = new Methods();
-            select.SELECT();
+            //select.SELECT();
 
             Methods insert = new Methods();
-            //insert.INSERT();
+            insert.INSERT();
 
             Methods update = new Methods();
             //update.UPDATE();
