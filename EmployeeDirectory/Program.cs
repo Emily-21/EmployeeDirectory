@@ -15,21 +15,26 @@ namespace EmployeeDirectory
         {
             //CreateHostBuilder(args).Build().Run();
 
+            Methods select = new Methods();
+            select.SELECT();
 
-            Select select = new Select();
-            //select.SELECT();
+            Methods insert = new Methods();
+            //insert.INSERT();
 
-            Insert insert = new Insert();
-            insert.INSERT();
+            Methods update = new Methods();
+            //update.UPDATE();
+
+            Methods delete = new Methods();
+            //delete.DELETE();
         }
 
-    //    public static IHostBuilder CreateHostBuilder(string[] args) =>
-    //        Host.CreateDefaultBuilder(args)
-    //            .ConfigureWebHostDefaults(webBuilder =>
-    //            {
-    //                webBuilder.UseStartup<Startup>();
-    //            });
-    //}
+        //    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        //        Host.CreateDefaultBuilder(args)
+        //            .ConfigureWebHostDefaults(webBuilder =>
+        //            {
+        //                webBuilder.UseStartup<Startup>();
+        //            });
+        //}
     }
 }
 
