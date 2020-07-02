@@ -11,6 +11,5 @@
   <ItemGroup>
     <Folder Include="Methods\" />
     <Folder Include="Views\Methods\" />
-    <Folder Include="Classes\" />
   </ItemGroup>
 </Project>
