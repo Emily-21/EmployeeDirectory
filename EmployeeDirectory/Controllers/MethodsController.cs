@@ -36,7 +36,7 @@ namespace EmployeeDirectory.Controllers
                 SqlCommand cmd = new SqlCommand(SELECT, connection);
                 // opening the connection to allow data to pass
                 connection.Open();
-                
+
                 // creating a new variable, 'model', turning it into a list.
                 var model = new List<EmployeeDirectory.Models.EmployeeModel>();
 
@@ -44,7 +44,7 @@ namespace EmployeeDirectory.Controllers
                 {
                     while (reader.Read())
                     {
-                        
+
                         var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
                         // where is this coming from? Models Folder/EmployeeModel Class
                         // creating a new variable, 'employeeDetails', that passes values for the list.
@@ -54,7 +54,7 @@ namespace EmployeeDirectory.Controllers
                         employeeDetails.WorkPlace = reader["WorkPlace"].ToString();
                         employeeDetails.Email = reader["Email"].ToString();
                         employeeDetails.PhoneNumber = reader["PhoneNumber"].ToString();
-          
+
                         // model = list and adds employeeDetails to a list format
                         model.Add(employeeDetails);
 
@@ -67,7 +67,7 @@ namespace EmployeeDirectory.Controllers
         }
 
 
-        public ActionResult Delete(int IDnum = 2)
+        public ActionResult Delete(int IDnum = 6)
         {
 
 
@@ -112,7 +112,104 @@ namespace EmployeeDirectory.Controllers
                 return View(model);
             }
         }
+
+
+        public ActionResult Insert()
+        {
+
+
+            ////Emily & Cals databases
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "localhost,1433";
+            builder.UserID = "sa";
+            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "Puerr0r@diactiv0";
+            builder.InitialCatalog = "StaffDirectory";
+
+            var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
+
+            string INSERT = "INSERT INTO StaffModel VALUES (11, 'Jacob Reilly Cooper', 'HR', 'Soapworks', 'jrc@talktalkplc.com', '0765400322')";
+
+
+            Console.WriteLine("Connecting to SQL Server.");
+
+            SqlConnection connection = new SqlConnection(builder.ConnectionString);
+            using (connection)
+            {
+                SqlCommand cmd = new SqlCommand(INSERT, connection);
+                connection.Open();
+
+                var model = new List<EmployeeDirectory.Models.EmployeeModel>();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        employeeDetails.EmployeeID += (int)reader["EmployeeID"];
+                        employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
+                        employeeDetails.JobTitle += reader["JobTitle"].ToString();
+                        employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
+                        employeeDetails.Email += reader["Email"].ToString();
+                        employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
+
+                        model.Add(employeeDetails);
+
+                    }
+                }
+                return View(model);
+
+            }
+        }
+
+                public ActionResult Update()
+                {
+
+
+                    ////Emily & Cals databases
+                    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                    builder.DataSource = "localhost,1433";
+                    builder.UserID = "sa";
+                    builder.Password = "<YourStrong@Passw0rd>";
+                    //builder.Password = "Puerr0r@diactiv0";
+                    builder.InitialCatalog = "StaffDirectory";
+
+                    var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
+
+                    string UPDATE = "UPDATE StaffModel SET PhoneNumber = '075' WHERE EmployeeID = 11";
+
+           
+
+                    SqlConnection connection = new SqlConnection(builder.ConnectionString);
+                    using (connection)
+                    {
+                        SqlCommand cmd = new SqlCommand(UPDATE, connection);
+                        connection.Open();
+
+                        var model = new List<EmployeeDirectory.Models.EmployeeModel>();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+
+                                employeeDetails.EmployeeID += (int)reader["EmployeeID"];
+                                employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
+                                employeeDetails.JobTitle += reader["JobTitle"].ToString();
+                                employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
+                                employeeDetails.Email += reader["Email"].ToString();
+                                employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
+
+                                model.Add(employeeDetails);
+
+                            }
+                        }
+                        return View(model);
+                    }
+        }
+
     }
+
 }
 
 
