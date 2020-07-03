@@ -18,9 +18,9 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "<YourStrong@Passw0rd>";
             // James' password
-            //builder.Password = "Puerr0r@diactiv0";
+            builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             // getting all data from StaffModel
@@ -49,7 +49,7 @@ namespace EmployeeDirectory.Controllers
                         // where is this coming from? Models Folder/EmployeeModel Class
                         // creating a new variable, 'employeeDetails', that passes values for the list.
                         employeeDetails.EmployeeID = (int)reader["EmployeeID"];
-                        employeeDetails.EmployeeName = reader["EmployeeName"].ToString();
+                        employeeDetails.EmployeeName = reader["StaffName"].ToString();
                         employeeDetails.JobTitle = reader["JobTitle"].ToString();
                         employeeDetails.WorkPlace = reader["WorkPlace"].ToString();
                         employeeDetails.Email = reader["Email"].ToString();
@@ -75,8 +75,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
-            //builder.Password = "Puerr0r@diactiv0";
+            //builder.Password = "<YourStrong@Passw0rd>";
+            builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -123,8 +123,8 @@ namespace EmployeeDirectory.Controllers
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
             builder.Password = "<YourStrong@Passw0rd>";
-            //builder.Password = "Puerr0r@diactiv0";
-            builder.InitialCatalog = "StaffDirectory";
+            builder.Password = "Puerr0r@diactiv0";
+            //builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
@@ -147,7 +147,7 @@ namespace EmployeeDirectory.Controllers
                     {
 
                         employeeDetails.EmployeeID += (int)reader["EmployeeID"];
-                        employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
+                        employeeDetails.EmployeeName += reader["StaffName"].ToString();
                         employeeDetails.JobTitle += reader["JobTitle"].ToString();
                         employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
                         employeeDetails.Email += reader["Email"].ToString();
@@ -170,8 +170,8 @@ namespace EmployeeDirectory.Controllers
                     SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
                     builder.DataSource = "localhost,1433";
                     builder.UserID = "sa";
-                    builder.Password = "<YourStrong@Passw0rd>";
-                    //builder.Password = "Puerr0r@diactiv0";
+            //builder.Password = "<YourStrong@Passw0rd>";
+                    builder.Password = "Puerr0r@diactiv0";
                     builder.InitialCatalog = "StaffDirectory";
 
                     var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -194,7 +194,7 @@ namespace EmployeeDirectory.Controllers
                             {
 
                                 employeeDetails.EmployeeID += (int)reader["EmployeeID"];
-                                employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
+                                employeeDetails.EmployeeName += reader["StaffName"].ToString();
                                 employeeDetails.JobTitle += reader["JobTitle"].ToString();
                                 employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
                                 employeeDetails.Email += reader["Email"].ToString();
