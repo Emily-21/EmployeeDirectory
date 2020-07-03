@@ -67,7 +67,7 @@ namespace EmployeeDirectory.Controllers
         }
 
 
-        public ActionResult Delete(int IDnum = 6)
+        public ActionResult Delete()
         {
 
 
@@ -81,7 +81,7 @@ namespace EmployeeDirectory.Controllers
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
-            string DELETE = $"DELETE FROM StaffModel WHERE EmployeeID = {IDnum}";
+            string DELETE = $"DELETE FROM StaffModel WHERE EmployeeID = 8";
 
             Console.WriteLine("Connecting to SQL Server.");
 
@@ -107,9 +107,11 @@ namespace EmployeeDirectory.Controllers
 
                         model.Add(employeeDetails);
 
+
                     }
+                    return RedirectToAction("Select");
                 }
-                return View(model);
+
             }
         }
 
@@ -128,7 +130,7 @@ namespace EmployeeDirectory.Controllers
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
-            string INSERT = "INSERT INTO StaffModel VALUES (11, 'Jacob Reilly Cooper', 'HR', 'Soapworks', 'jrc@talktalkplc.com', '0765400322')";
+            string INSERT = "INSERT INTO StaffModel VALUES (8, 'Superman', 'Apprentice Digital Developer', 'Soapworks', 'super.man@talktalkplc.com', '0723251499')";
 
 
             Console.WriteLine("Connecting to SQL Server.");
@@ -157,7 +159,7 @@ namespace EmployeeDirectory.Controllers
 
                     }
                 }
-                return View(model);
+                return RedirectToAction("Select");
 
             }
         }
@@ -176,7 +178,7 @@ namespace EmployeeDirectory.Controllers
 
                     var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
-                    string UPDATE = "UPDATE StaffModel SET PhoneNumber = '075' WHERE EmployeeID = 11";
+                    string UPDATE = "UPDATE StaffModel SET PhoneNumber = '07131251311' WHERE EmployeeID = 6";
 
            
 
@@ -204,8 +206,8 @@ namespace EmployeeDirectory.Controllers
 
                             }
                         }
-                        return View(model);
-                    }
+                return RedirectToAction("Select");
+            }
         }
 
     }
