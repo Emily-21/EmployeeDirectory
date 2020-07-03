@@ -36,7 +36,7 @@ namespace EmployeeDirectory.Controllers
                 SqlCommand cmd = new SqlCommand(SELECT, connection);
                 // opening the connection to allow data to pass
                 connection.Open();
-
+                
                 // creating a new variable, 'model', turning it into a list.
                 var model = new List<EmployeeDirectory.Models.EmployeeModel>();
 
@@ -67,53 +67,52 @@ namespace EmployeeDirectory.Controllers
         }
 
 
-        //public ActionResult Delete(int IDnum = 4)
-        //{
+        public ActionResult Delete(int IDnum = 2)
+        {
 
 
-        //    //Emily & Cals databases
-        //    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-        //    builder.DataSource = "localhost,1433";
-        //    builder.UserID = "sa";
-        //    builder.Password = "<YourStrong@Passw0rd>";
-        //    //builder.Password = "Puerr0r@diactiv0";
-        //    builder.InitialCatalog = "StaffDirectory";
+            ////Emily & Cals databases
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "localhost,1433";
+            builder.UserID = "sa";
+            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "Puerr0r@diactiv0";
+            builder.InitialCatalog = "StaffDirectory";
 
-        //    var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
+            var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
-        //    string DELETE = $"DELETE FROM StaffModel WHERE EmployeeID = {IDnum}";
+            string DELETE = $"DELETE FROM StaffModel WHERE EmployeeID = {IDnum}";
 
-        //    Console.WriteLine("Connecting to SQL Server.");
+            Console.WriteLine("Connecting to SQL Server.");
 
-        //    SqlConnection connection = new SqlConnection(builder.ConnectionString);
-        //    using (connection)
-        //    {
-        //        SqlCommand cmd = new SqlCommand(DELETE, connection);
-        //        connection.Open();
+            SqlConnection connection = new SqlConnection(builder.ConnectionString);
+            using (connection)
+            {
+                SqlCommand cmd = new SqlCommand(DELETE, connection);
+                connection.Open();
 
-        //        var model = new List<EmployeeDirectory.Models.EmployeeModel>();
+                var model = new List<EmployeeDirectory.Models.EmployeeModel>();
 
-        //        using (SqlDataReader reader = cmd.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
 
-        //                employeeDetails.EmployeeID += (int)reader["EmployeeID"];
-        //                employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
-        //                employeeDetails.JobTitle += reader["JobTitle"].ToString();
-        //                employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
-        //                employeeDetails.Email += reader["Email"].ToString();
-        //                employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
+                        employeeDetails.EmployeeID += (int)reader["EmployeeID"];
+                        employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
+                        employeeDetails.JobTitle += reader["JobTitle"].ToString();
+                        employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
+                        employeeDetails.Email += reader["Email"].ToString();
+                        employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
 
-        //                model.Add(employeeDetails);
+                        model.Add(employeeDetails);
 
-        //            }
-        //        }
-        //        return View(model);
-        //    }
-        //}
+                    }
+                }
+                return View(model);
+            }
+        }
     }
 }
 
 
-                  
