@@ -43,7 +43,7 @@
                 <td>@employeeDetails.WorkPlace</td>
                 <td>@employeeDetails.Email</td>
                 <td>@employeeDetails.PhoneNumber</td>
-                <td>@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td> @*Calling Delete variable and assigns it to Employee ID in the DataBase*@
                 <td>@Html.ActionLink("Update", "Update")</td>
             </tr>
         }

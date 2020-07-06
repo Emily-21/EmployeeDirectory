@@ -28,14 +28,16 @@
         @foreach (var employeeDetails in Model)
         {
             // this calls 'employeeDetails' from MethodsController
-            <tr>
-                <td>@employeeDetails.EmployeeID</td>
-                <td>@employeeDetails.EmployeeName</td>
-                <td>@employeeDetails.JobTitle</td>
-                <td>@employeeDetails.WorkPlace</td>
-                <td>@employeeDetails.Email</td>
-                <td>@employeeDetails.PhoneNumber</td>
-            </tr>
+    <tr>
+        <td>@employeeDetails.EmployeeID</td>
+        <td>@employeeDetails.EmployeeName</td>
+        <td>@employeeDetails.JobTitle</td>
+        <td>@employeeDetails.WorkPlace</td>
+        <td>@employeeDetails.Email</td>
+        <td>@employeeDetails.PhoneNumber</td>
+        <td>@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td> @*Calling Delete variable and assigns it to Employee ID in the DataBase*@
+        <td>@Html.ActionLink("Update", "Update")</td>
+    </tr>
         }
     </table>
 }
