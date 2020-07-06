@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using System.Data;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace EmployeeDirectory.Controllers
@@ -67,7 +68,8 @@ namespace EmployeeDirectory.Controllers
         }
 
 
-        public ActionResult Delete()
+        public ActionResult Delete(int EmployeeID)
+            // EmployeeID is the variable that allows us to change that Value
         {
 
 
@@ -81,7 +83,10 @@ namespace EmployeeDirectory.Controllers
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
-            string DELETE = $"DELETE FROM StaffModel WHERE EmployeeID = 8";
+            string DELETE = $"DELETE FROM StaffModel WHERE EmployeeID={EmployeeID}";
+            // calling the DELETE method from StaffModel
+            // EmployeeID QUOTATION = DATABASE
+            // EmployeeID PARAMETER = VALUE
 
             Console.WriteLine("Connecting to SQL Server.");
 
@@ -106,14 +111,12 @@ namespace EmployeeDirectory.Controllers
                         employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
 
                         model.Add(employeeDetails);
-
-
                     }
                     return RedirectToAction("Select");
                 }
-
             }
         }
+
 
 
         public ActionResult Insert()
@@ -164,54 +167,50 @@ namespace EmployeeDirectory.Controllers
             }
         }
 
-                public ActionResult Update()
-                {
+        public ActionResult Update()
+        {
 
 
-                    ////Emily & Cals databases
-                    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                    builder.DataSource = "localhost,1433";
-                    builder.UserID = "sa";
+            ////Emily & Cals databases
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "localhost,1433";
+            builder.UserID = "sa";
             //builder.Password = "<YourStrong@Passw0rd>";
-                    builder.Password = "Puerr0r@diactiv0";
-                    builder.InitialCatalog = "StaffDirectory";
+            builder.Password = "Puerr0r@diactiv0";
+            builder.InitialCatalog = "StaffDirectory";
 
-                    var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
+            var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
-                    string UPDATE = "UPDATE StaffModel SET PhoneNumber = '07131251311' WHERE EmployeeID = 6";
+            string UPDATE = "UPDATE StaffModel SET PhoneNumber = '07131251311' WHERE EmployeeID = 6";
 
-           
 
-                    SqlConnection connection = new SqlConnection(builder.ConnectionString);
-                    using (connection)
+
+            SqlConnection connection = new SqlConnection(builder.ConnectionString);
+            using (connection)
+            {
+                SqlCommand cmd = new SqlCommand(UPDATE, connection);
+                connection.Open();
+
+                var model = new List<EmployeeDirectory.Models.EmployeeModel>();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
                     {
-                        SqlCommand cmd = new SqlCommand(UPDATE, connection);
-                        connection.Open();
 
-                        var model = new List<EmployeeDirectory.Models.EmployeeModel>();
+                        employeeDetails.EmployeeID += (int)reader["EmployeeID"];
+                        employeeDetails.EmployeeName += reader["StaffName"].ToString();
+                        employeeDetails.JobTitle += reader["JobTitle"].ToString();
+                        employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
+                        employeeDetails.Email += reader["Email"].ToString();
+                        employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
+                        model.Add(employeeDetails);
 
-                                employeeDetails.EmployeeID += (int)reader["EmployeeID"];
-                                employeeDetails.EmployeeName += reader["StaffName"].ToString();
-                                employeeDetails.JobTitle += reader["JobTitle"].ToString();
-                                employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
-                                employeeDetails.Email += reader["Email"].ToString();
-                                employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
-
-                                model.Add(employeeDetails);
-
-                            }
-                        }
+                    }
+                }
                 return RedirectToAction("Select");
             }
         }
-
     }
-
 }
-
-
