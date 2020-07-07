@@ -9,20 +9,23 @@ using System.Data;
 
 namespace EmployeeDirectory.Controllers
 {
+ 
+
     public class MethodsController : Controller
     {
 
         public ActionResult Select()
         {
-
+            EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
+            string newConnection = connectionString.connectionString;
             //Emily & Cals databases
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost,1433";
-            builder.UserID = "sa";
+            //SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            //builder.DataSource = "localhost,1433";
+            //builder.UserID = "sa";
             //builder.Password = "<YourStrong@Passw0rd>";
-            // James' password
-            builder.Password = "Puerr0r@diactiv0";
-            builder.InitialCatalog = "StaffDirectory";
+            //// James' password
+            ////builder.Password = "Puerr0r@diactiv0";
+            //builder.InitialCatalog = "StaffDirectory";
 
             // getting all data from StaffModel
             string SELECT = "SELECT * FROM StaffModel";
@@ -30,7 +33,7 @@ namespace EmployeeDirectory.Controllers
             Console.WriteLine("Connecting to SQL Server.");
 
             // establishing a connection to our database
-            SqlConnection connection = new SqlConnection(builder.ConnectionString);
+            SqlConnection connection = new SqlConnection(newConnection);
             using (connection)
             {
                 // taking the command 'SELECT' from database and applying it here 
@@ -69,16 +72,18 @@ namespace EmployeeDirectory.Controllers
 
         public ActionResult Search(int EmployeeID)
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost,1433";
-            builder.UserID = "sa";
+            //SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            //builder.DataSource = "localhost,1433";
+            //builder.UserID = "sa";
             //builder.Password = "<YourStrong@Passw0rd>";
-            builder.Password = "Puerr0r@diactiv0";
-            builder.InitialCatalog = "StaffDirectory";
+            ////builder.Password = "Puerr0r@diactiv0";
+            //builder.InitialCatalog = "StaffDirectory";
+            EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
+            string newConnection = connectionString.connectionString;
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
             string SEARCH = $"SELECT * FROM StaffModel WHERE EmployeeID={EmployeeID}";
 
-            SqlConnection connection = new SqlConnection(builder.ConnectionString);
+            SqlConnection connection = new SqlConnection(newConnection);
             using (connection)
             {
                 SqlCommand cmd = new SqlCommand(SEARCH, connection);
@@ -113,8 +118,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            //builder.Password = "<YourStrong@Passw0rd>";
-            builder.Password = "Puerr0r@diactiv0";
+            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -163,8 +168,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            //builder.Password = "<YourStrong@Passw0rd>";
-            builder.Password = "Puerr0r@diactiv0";
+            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -204,8 +209,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            //builder.Password = "<YourStrong@Passw0rd>";
-            builder.Password = "Puerr0r@diactiv0";
+            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
