@@ -19,9 +19,9 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            //builder.Password = "<YourStrong@Passw0rd>";
+            builder.Password = "<YourStrong@Passw0rd>";
             // James' password
-            builder.Password = "Puerr0r@diactiv0";
+            //builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             // getting all data from StaffModel
@@ -50,7 +50,7 @@ namespace EmployeeDirectory.Controllers
                         // where is this coming from? Models Folder/EmployeeModel Class
                         // creating a new variable, 'employeeDetails', that passes values for the list.
                         employeeDetails.EmployeeID = (int)reader["EmployeeID"];
-                        employeeDetails.EmployeeName = reader["StaffName"].ToString();
+                        employeeDetails.EmployeeName = reader["EmployeeName"].ToString();
                         employeeDetails.JobTitle = reader["JobTitle"].ToString();
                         employeeDetails.WorkPlace = reader["WorkPlace"].ToString();
                         employeeDetails.Email = reader["Email"].ToString();
@@ -77,8 +77,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            //builder.Password = "<YourStrong@Passw0rd>";
-            builder.Password = "Puerr0r@diactiv0";
+            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -118,8 +118,8 @@ namespace EmployeeDirectory.Controllers
         }
 
 
-
-        public ActionResult Insert()
+        [HttpPost]
+        public ActionResult Insert(int EmployeeID, string EmployeeName, string JobTitle, string WorkPlace, string Email, string PhoneNumber)
         {
 
 
@@ -128,12 +128,12 @@ namespace EmployeeDirectory.Controllers
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
             builder.Password = "<YourStrong@Passw0rd>";
-            builder.Password = "Puerr0r@diactiv0";
-            //builder.InitialCatalog = "StaffDirectory";
+            //builder.Password = "Puerr0r@diactiv0";
+            builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
-            string INSERT = "INSERT INTO StaffModel VALUES (8, 'Superman', 'Apprentice Digital Developer', 'Soapworks', 'super.man@talktalkplc.com', '0723251499')";
+            string INSERT = $"INSERT INTO StaffModel VALUES ({EmployeeID}, '{EmployeeName}', '{JobTitle}', '{WorkPlace}', '{Email}', '{PhoneNumber}')";
 
 
             Console.WriteLine("Connecting to SQL Server.");
@@ -146,26 +146,19 @@ namespace EmployeeDirectory.Controllers
 
                 var model = new List<EmployeeDirectory.Models.EmployeeModel>();
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
+                cmd.Parameters.AddWithValue("EmployeeID", EmployeeID);
+                cmd.Parameters.AddWithValue("EmployeeName", EmployeeName);
+                cmd.Parameters.AddWithValue("JobTitle", JobTitle);
+                cmd.Parameters.AddWithValue("WorkPlace", WorkPlace);
+                cmd.Parameters.AddWithValue("Email", Email);
+                cmd.Parameters.AddWithValue("PhoneNumber", PhoneNumber);
 
-                        employeeDetails.EmployeeID += (int)reader["EmployeeID"];
-                        employeeDetails.EmployeeName += reader["StaffName"].ToString();
-                        employeeDetails.JobTitle += reader["JobTitle"].ToString();
-                        employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
-                        employeeDetails.Email += reader["Email"].ToString();
-                        employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
+                cmd.ExecuteNonQuery();
 
-                        model.Add(employeeDetails);
-
-                    }
-                }
                 return RedirectToAction("Select");
-
             }
         }
+
 
         public ActionResult Update()
         {
@@ -175,8 +168,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            //builder.Password = "<YourStrong@Passw0rd>";
-            builder.Password = "Puerr0r@diactiv0";
+            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -199,7 +192,7 @@ namespace EmployeeDirectory.Controllers
                     {
 
                         employeeDetails.EmployeeID += (int)reader["EmployeeID"];
-                        employeeDetails.EmployeeName += reader["StaffName"].ToString();
+                        employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
                         employeeDetails.JobTitle += reader["JobTitle"].ToString();
                         employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
                         employeeDetails.Email += reader["Email"].ToString();

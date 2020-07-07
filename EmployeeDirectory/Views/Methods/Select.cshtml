@@ -7,8 +7,6 @@
     // this calls 'model' from MethodsController
     @model List<EmployeeDirectory.Models.EmployeeModel>
 
-
-
     <h1>Employee Details</h1>
 
     <br />
@@ -21,8 +19,6 @@
     </div>
 
     <br />
-
-    <h2>@Html.ActionLink("Add Employee", "Insert")</h2>
 
     <table border="1" width="100%">
         <tr>
@@ -45,9 +41,46 @@
                 <td>@employeeDetails.PhoneNumber</td>
                 <td>@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td>
                 <td>@Html.ActionLink("Update", "Update")</td>
+
             </tr>
         }
     </table>
+
+    <br />
+    
+    <h3>Add Employee</h3>
+    <form action="/Methods/Insert" method="post">
+        <table border="1" height="300" width="300">
+            <tr>
+                <td>Employee ID: </td>
+                <td><input type="text" name="EmployeeID" /></td>
+            </tr>
+            <tr>
+                <td>Employee Name: </td>
+                <td><input type="text" name="EmployeeName" /></td>
+            </tr>
+            <tr>
+                <td>Job Title</td>
+                <td><input type="text" name="JobTitle" /></td>
+            </tr>
+            <tr>
+                <td>Work Place: </td>
+                <td><input type="text" name="WorkPlace" /></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td><input type="text" name="Email" /></td>
+            </tr>
+            <tr>
+                <td>Phone Number: </td>
+                <td><input type="text" name="PhoneNumber" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Save" /></td>
+            </tr>
+        </table>
+    </form>
+
 }
 
 
