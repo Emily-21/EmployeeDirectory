@@ -12,9 +12,9 @@
     <br />
 
     <div class="search-container">
-        <form>
-            <input type="text" placeholder="Search Employee..." name="search">
-            <button type="submit" asp-area="" asp-controller="Methods" asp-action="Select">Submit</button>
+        <form action="/Methods/Search">
+            <input type="text" placeholder="Search Employee..." name="EmployeeID">
+            <button type="submit" asp-area="" asp-controller="Methods" asp-action="Search" asp-route-EmployeeID="">Submit</button>
         </form>
     </div>
 

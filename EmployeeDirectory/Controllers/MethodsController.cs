@@ -19,9 +19,9 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
+            //builder.Password = "<YourStrong@Passw0rd>";
             // James' password
-            //builder.Password = "Puerr0r@diactiv0";
+            builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             // getting all data from StaffModel
@@ -67,6 +67,42 @@ namespace EmployeeDirectory.Controllers
             }
         }
 
+        public ActionResult Search(int EmployeeID)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "localhost,1433";
+            builder.UserID = "sa";
+            //builder.Password = "<YourStrong@Passw0rd>";
+            builder.Password = "Puerr0r@diactiv0";
+            builder.InitialCatalog = "StaffDirectory";
+            var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
+            string SEARCH = $"SELECT * FROM StaffModel WHERE EmployeeID={EmployeeID}";
+
+            SqlConnection connection = new SqlConnection(builder.ConnectionString);
+            using (connection)
+            {
+                SqlCommand cmd = new SqlCommand(SEARCH, connection);
+                connection.Open();
+                var model = new List<EmployeeDirectory.Models.EmployeeModel>();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        employeeDetails.EmployeeID += (int)reader["EmployeeID"];
+                        employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
+                        employeeDetails.JobTitle += reader["JobTitle"].ToString();
+                        employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
+                        employeeDetails.Email += reader["Email"].ToString();
+                        employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
+                        //Console.WriteLine(employeeDetails);
+                        model.Add(employeeDetails);
+                    }
+                    connection.Close();
+                    return View(model);
+                }
+            }
+        }
+
 
         public ActionResult Delete(int EmployeeID)
             // EmployeeID is the variable that allows us to change that Value
@@ -77,8 +113,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
-            //builder.Password = "Puerr0r@diactiv0";
+            //builder.Password = "<YourStrong@Passw0rd>";
+            builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -127,8 +163,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
-            //builder.Password = "Puerr0r@diactiv0";
+            //builder.Password = "<YourStrong@Passw0rd>";
+            builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -168,8 +204,8 @@ namespace EmployeeDirectory.Controllers
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost,1433";
             builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
-            //builder.Password = "Puerr0r@diactiv0";
+            //builder.Password = "<YourStrong@Passw0rd>";
+            builder.Password = "Puerr0r@diactiv0";
             builder.InitialCatalog = "StaffDirectory";
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();

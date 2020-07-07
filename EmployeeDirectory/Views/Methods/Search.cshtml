@@ -1,0 +1,48 @@
+﻿@using System;
+@using System.Data.SqlClient;
+@{
+    // this calls 'model' from MethodsController
+    @model List<EmployeeDirectory.Models.EmployeeModel>
+
+
+
+    <h1>Employee Details</h1>
+
+    <br />
+
+    <div class="search-container">
+        <form action="/Methods/Search" method="get">
+            <input type="text" placeholder="Search Employee..." name="EmployeeID">
+            <button type="submit" asp-area="" asp-controller="Methods" asp-action="Search" asp-route-EmployeeID="3">Submit</button>
+        </form>
+    </div>
+
+    <br />
+
+    <h2>@Html.ActionLink("Add Employee", "Insert")</h2>
+
+    <table border="1" width="100%">
+        <tr>
+            <th>Employee ID </th>
+            <th>Employee Name </th>
+            <th>Job Title </th>
+            <th>Workplace </th>
+            <th>Email </th>
+            <th>Phone Number </th>
+        </tr>
+        @foreach (var employeeDetails in Model)
+        {
+            // this calls 'employeeDetails' from MethodsController
+            <tr>
+                <td>@employeeDetails.EmployeeID</td>
+                <td>@employeeDetails.EmployeeName</td>
+                <td>@employeeDetails.JobTitle</td>
+                <td>@employeeDetails.WorkPlace</td>
+                <td>@employeeDetails.Email</td>
+                <td>@employeeDetails.PhoneNumber</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td> @*Calling Delete variable and assigns it to Employee ID in the DataBase*@
+                <td>@Html.ActionLink("Update", "Update")</td>
+            </tr>
+        }
+    </table>
+}
