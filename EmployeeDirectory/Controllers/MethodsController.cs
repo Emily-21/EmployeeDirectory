@@ -110,7 +110,7 @@ namespace EmployeeDirectory.Controllers
                         employeeDetails.Email += reader["Email"].ToString();
                         employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
 
-                        model.Add(employeeDetails);
+                        model.Remove(employeeDetails);
                     }
                     return RedirectToAction("Select");
                 }
