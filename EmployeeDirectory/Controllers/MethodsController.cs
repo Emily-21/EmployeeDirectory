@@ -33,10 +33,6 @@ namespace EmployeeDirectory.Controllers
                 // opening the connection to allow data to pass
                 connection.Open();
 
-
-            
-
-
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -61,10 +57,8 @@ namespace EmployeeDirectory.Controllers
                         }
                         else
                         {
-                            return View();
 
-                            //connection.Close();
-                            //return RedirectToAction("Login");
+                            return View();
 
                         }
                     }
