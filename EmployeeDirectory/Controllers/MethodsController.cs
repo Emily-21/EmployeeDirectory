@@ -13,6 +13,72 @@ namespace EmployeeDirectory.Controllers
 
     public class MethodsController : Controller
     {
+        public ActionResult Login(string Email, string Password)
+        {
+            EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
+            string newConnection = connectionString.connectionString;
+
+
+            // getting email and password from Stafflogin
+            string SELECT = $"SELECT * FROM StaffLogin WHERE Email = '{Email}' AND Password = '{Password}' ";
+
+            Console.WriteLine("Connecting to SQL Server.");
+
+            // establishing a connection to our database
+            SqlConnection connection = new SqlConnection(newConnection);
+            using (connection)
+            {
+                // taking the command 'SELECT' from database and applying it here 
+                SqlCommand cmd = new SqlCommand(SELECT, connection);
+                // opening the connection to allow data to pass
+                connection.Open();
+
+
+            
+
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        var employeeLogin = new EmployeeDirectory.Models.EmployeeLogin();
+                        // where is this coming from? Models Folder/EmployeeModel Class
+                        // creating a new variable, 'employeeDetails', that passes values for the list.
+
+                        employeeLogin.Email = reader["Email"].ToString();
+                        employeeLogin.Password = reader["Password"].ToString();
+
+                        // model = list and adds employeeDetails to a list format
+                        //model.Add(employeeLogin);
+
+
+                        if (employeeLogin != null)
+                        {
+                            connection.Close();
+                            return RedirectToAction("Select");
+
+                        }
+                        else
+                        {
+                            return View();
+
+                            //connection.Close();
+                            //return RedirectToAction("Login");
+
+                        }
+                    }
+                    return View();
+
+                }
+
+
+            }
+        }
+
+
+
+
 
         public ActionResult Select()
         {
