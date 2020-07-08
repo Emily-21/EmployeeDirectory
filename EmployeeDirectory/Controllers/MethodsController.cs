@@ -186,7 +186,7 @@ namespace EmployeeDirectory.Controllers
             EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
             string newConnection = connectionString.connectionString;
 
-            string UPDATE = $"UPDATE StaffModel SET EmployeeName = '{EmployeeName}' OR JobTitle = '{JobTitle}' OR WorkPlace = '{WorkPlace}' OR Email = '{Email}' OR PhoneNumber = '{PhoneNumber}' WHERE EmployeeID = {EmployeeID}";
+            string UPDATE = $"UPDATE StaffModel SET EmployeeName = '{EmployeeName}', JobTitle = '{JobTitle}', WorkPlace = '{WorkPlace}', Email = '{Email}', PhoneNumber = '{PhoneNumber}' WHERE EmployeeID = {EmployeeID}";
 
 
             SqlConnection connection = new SqlConnection(newConnection);
