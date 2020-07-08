@@ -18,14 +18,7 @@ namespace EmployeeDirectory.Controllers
         {
             EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
             string newConnection = connectionString.connectionString;
-            //Emily & Cals databases
-            //SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            //builder.DataSource = "localhost,1433";
-            //builder.UserID = "sa";
-            //builder.Password = "<YourStrong@Passw0rd>";
-            //// James' password
-            ////builder.Password = "Puerr0r@diactiv0";
-            //builder.InitialCatalog = "StaffDirectory";
+            
 
             // getting all data from StaffModel
             string SELECT = "SELECT * FROM StaffModel";
@@ -72,12 +65,7 @@ namespace EmployeeDirectory.Controllers
 
         public ActionResult Search(int EmployeeID)
         {
-            //SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            //builder.DataSource = "localhost,1433";
-            //builder.UserID = "sa";
-            //builder.Password = "<YourStrong@Passw0rd>";
-            ////builder.Password = "Puerr0r@diactiv0";
-            //builder.InitialCatalog = "StaffDirectory";
+           
             EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
             string newConnection = connectionString.connectionString;
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
@@ -113,14 +101,9 @@ namespace EmployeeDirectory.Controllers
             // EmployeeID is the variable that allows us to change that Value
         {
 
-
-            ////Emily & Cals databases
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost,1433";
-            builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
-            //builder.Password = "Puerr0r@diactiv0";
-            builder.InitialCatalog = "StaffDirectory";
+            EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
+            string newConnection = connectionString.connectionString;
+    
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
@@ -131,7 +114,7 @@ namespace EmployeeDirectory.Controllers
 
             Console.WriteLine("Connecting to SQL Server.");
 
-            SqlConnection connection = new SqlConnection(builder.ConnectionString);
+            SqlConnection connection = new SqlConnection(newConnection);
             using (connection)
             {
                 SqlCommand cmd = new SqlCommand(DELETE, connection);
@@ -163,29 +146,25 @@ namespace EmployeeDirectory.Controllers
         public ActionResult Insert(int EmployeeID, string EmployeeName, string JobTitle, string WorkPlace, string Email, string PhoneNumber)
         {
 
+            EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
+            string newConnection = connectionString.connectionString;
+           
 
-            ////Emily & Cals databases
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost,1433";
-            builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
-            //builder.Password = "Puerr0r@diactiv0";
-            builder.InitialCatalog = "StaffDirectory";
-
-            var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
+       
 
             string INSERT = $"INSERT INTO StaffModel VALUES ({EmployeeID}, '{EmployeeName}', '{JobTitle}', '{WorkPlace}', '{Email}', '{PhoneNumber}')";
 
 
             Console.WriteLine("Connecting to SQL Server.");
 
-            SqlConnection connection = new SqlConnection(builder.ConnectionString);
+            SqlConnection connection = new SqlConnection(newConnection);
+           
             using (connection)
             {
                 SqlCommand cmd = new SqlCommand(INSERT, connection);
                 connection.Open();
 
-                var model = new List<EmployeeDirectory.Models.EmployeeModel>();
+            
 
                 cmd.Parameters.AddWithValue("EmployeeID", EmployeeID);
                 cmd.Parameters.AddWithValue("EmployeeName", EmployeeName);
@@ -203,23 +182,16 @@ namespace EmployeeDirectory.Controllers
 
         public ActionResult Update()
         {
-
-
-            ////Emily & Cals databases
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost,1433";
-            builder.UserID = "sa";
-            builder.Password = "<YourStrong@Passw0rd>";
-            //builder.Password = "Puerr0r@diactiv0";
-            builder.InitialCatalog = "StaffDirectory";
+            EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
+            string newConnection = connectionString.connectionString;
 
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
             string UPDATE = "UPDATE StaffModel SET PhoneNumber = '07131251311' WHERE EmployeeID = 6";
 
 
+            SqlConnection connection = new SqlConnection(newConnection);
 
-            SqlConnection connection = new SqlConnection(builder.ConnectionString);
             using (connection)
             {
                 SqlCommand cmd = new SqlCommand(UPDATE, connection);
