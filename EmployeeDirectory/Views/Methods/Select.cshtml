@@ -13,7 +13,7 @@
 
     <div class="search-container">
         <form action="/Methods/Search">
-            <input type="text" placeholder="Search Employee..." padding="300px"name="EmployeeID">
+            <input type="text" placeholder="Search Employee..." padding="300px" name="EmployeeID">
             <button type="submit" asp-area="" asp-controller="Methods" asp-action="Search" asp-route-EmployeeID="">Submit</button>
         </form>
     </div>
@@ -47,9 +47,42 @@
     </table>
 
     <br />
-    
+
     <h3>Add Employee</h3>
     <form action="/Methods/Insert" method="post">
+        <table border="1" height="300" width="300">
+            <tr>
+                <td>Employee ID: </td>
+                <td><input type="text" name="EmployeeID" /></td>
+            </tr>
+            <tr>
+                <td>Employee Name: </td>
+                <td><input type="text" name="EmployeeName" /></td>
+            </tr>
+            <tr>
+                <td>Job Title</td>
+                <td><input type="text" name="JobTitle" /></td>
+            </tr>
+            <tr>
+                <td>Work Place: </td>
+                <td><input type="text" name="WorkPlace" /></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td><input type="text" name="Email" /></td>
+            </tr>
+            <tr>
+                <td>Phone Number: </td>
+                <td><input type="text" name="PhoneNumber" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Save" /></td>
+            </tr>
+        </table>
+    </form>
+
+    <h3>Update Employee Details</h3>
+    <form action="/Methods/Update" method="post">
         <table border="1" height="300" width="300">
             <tr>
                 <td>Employee ID: </td>

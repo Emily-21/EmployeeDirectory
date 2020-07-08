@@ -180,42 +180,37 @@ namespace EmployeeDirectory.Controllers
         }
 
 
-        public ActionResult Update()
+        public ActionResult Update(int EmployeeID, string EmployeeName, string JobTitle, string WorkPlace, string Email, string PhoneNumber)
         {
+            {
             EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
             string newConnection = connectionString.connectionString;
 
-            var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
-
-            string UPDATE = "UPDATE StaffModel SET PhoneNumber = '07131251311' WHERE EmployeeID = 6";
+            string UPDATE = $"UPDATE StaffModel SET EmployeeName = '{EmployeeName}' OR JobTitle = '{JobTitle}' OR WorkPlace = '{WorkPlace}' OR Email = '{Email}' OR PhoneNumber = '{PhoneNumber}' WHERE EmployeeID = {EmployeeID}";
 
 
             SqlConnection connection = new SqlConnection(newConnection);
 
             using (connection)
-            {
-                SqlCommand cmd = new SqlCommand(UPDATE, connection);
-                connection.Open();
 
-                var model = new List<EmployeeDirectory.Models.EmployeeModel>();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    while (reader.Read())
-                    {
+                    SqlCommand cmd = new SqlCommand(UPDATE, connection);
+                    connection.Open();
 
-                        employeeDetails.EmployeeID += (int)reader["EmployeeID"];
-                        employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
-                        employeeDetails.JobTitle += reader["JobTitle"].ToString();
-                        employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
-                        employeeDetails.Email += reader["Email"].ToString();
-                        employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
 
-                        model.Add(employeeDetails);
 
-                    }
+                    cmd.Parameters.AddWithValue("EmployeeID", EmployeeID);
+                    cmd.Parameters.AddWithValue("EmployeeName", EmployeeName);
+                    cmd.Parameters.AddWithValue("JobTitle", JobTitle);
+                    cmd.Parameters.AddWithValue("WorkPlace", WorkPlace);
+                    cmd.Parameters.AddWithValue("Email", Email);
+                    cmd.Parameters.AddWithValue("PhoneNumber", PhoneNumber);
+
+                    cmd.ExecuteNonQuery();
+
+                    return RedirectToAction("Select");
                 }
-                return RedirectToAction("Select");
+              
             }
         }
     }
