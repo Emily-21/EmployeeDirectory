@@ -4,7 +4,8 @@ namespace EmployeeDirectory.Methods
 {
     public class Connection
     {
-        public string connectionString = @"Data Source=localhost,1433; User ID = sa; Password=Puerr0r@diactiv0; Initial Catalog=StaffDirectory";
- 
+        public string connectionString = @"Data Source=localhost,1433; User ID = sa; Password=<YourStrong@Passw0rd>; Initial Catalog=StaffDirectory";
+        // James' password = Puerr0r@diactiv0
+
     }
 }

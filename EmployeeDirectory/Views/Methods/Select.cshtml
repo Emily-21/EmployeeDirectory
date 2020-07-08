@@ -13,7 +13,7 @@
 
     <div class="search-container">
         <form action="/Methods/Search">
-            <input type="text" placeholder="Search Employee..." padding="300px" name="EmployeeID">
+            <input type="text" placeholder="Search Employee..." name="EmployeeID">
             <button type="submit" asp-area="" asp-controller="Methods" asp-action="Search" asp-route-EmployeeID="">Submit</button>
         </form>
     </div>
@@ -80,6 +80,8 @@
             </tr>
         </table>
     </form>
+
+    <br/>
 
     <h3>Update Employee Details</h3>
     <form action="/Methods/Update" method="post">
