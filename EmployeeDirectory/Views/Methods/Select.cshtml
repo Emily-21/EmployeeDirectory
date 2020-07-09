@@ -4,9 +4,33 @@
 @using System;
 @using System.Data.SqlClient;
 @{
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        table tr th {
+            background-color: #394347;
+            color: #F7F410;
+            font-weight: bolder;
+        }
+        
+
+        .employee-container {
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+        .search-container{
+
+        }
+    </style>
     // this calls 'model' from MethodsController
     @model List<EmployeeDirectory.Models.EmployeeModel>
-
+<div class="employee-container">
     <h1>Employee Details</h1>
 
     <br />
@@ -28,6 +52,7 @@
             <th>Workplace </th>
             <th>Email </th>
             <th>Phone Number </th>
+            <th>HR Action</th>
         </tr>
         @foreach (var employeeDetails in Model)
         {
@@ -40,17 +65,17 @@
                 <td>@employeeDetails.Email</td>
                 <td>@employeeDetails.PhoneNumber</td>
                 <td>@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td> @*Calling Delete variable and assigns it to Employee ID in the DataBase*@
-                <td>@Html.ActionLink("Update", "Update")</td>
 
             </tr>
         }
     </table>
 
+
     <br />
 
     <h3>Add Employee</h3>
     <form action="/Methods/Insert" method="post">
-        <table border="1" height="300" width="300">
+        <table border="0" height="300" width="300">
             <tr>
                 <td>Employee ID: </td>
                 <td><input type="text" name="EmployeeID" /></td>
@@ -81,11 +106,11 @@
         </table>
     </form>
 
-    <br/>
+    <br />
 
     <h3>Update Employee Details</h3>
     <form action="/Methods/Update" method="post">
-        <table border="1" height="300" width="300">
+        <table border="0" height="300" width="300">
             <tr>
                 <td>Employee ID: </td>
                 <td><input type="text" name="EmployeeID" /></td>
@@ -115,6 +140,7 @@
             </tr>
         </table>
     </form>
+</div>
 
 }
 
