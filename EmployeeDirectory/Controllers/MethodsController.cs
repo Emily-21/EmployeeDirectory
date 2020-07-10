@@ -13,6 +13,18 @@ namespace EmployeeDirectory.Controllers
 
     public class MethodsController : Controller
     {
+
+        public IActionResult Insert()
+        {
+            return View();
+        }
+
+
+        public IActionResult Update()
+        {
+            return View();
+        }
+
         public ActionResult Login(string Email, string Password)
         {
             EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
@@ -239,7 +251,7 @@ namespace EmployeeDirectory.Controllers
             }
         }
 
-
+        [HttpPost]
         public ActionResult Update(int EmployeeID, string EmployeeName, string JobTitle, string WorkPlace, string Email, string PhoneNumber)
         {
             {

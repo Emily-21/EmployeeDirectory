@@ -1,0 +1,115 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using System;
+@using System.Data.SqlClient;
+@{
+}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link Href="https://www.fontify.me/wf/f6e2e931edd4f5a2fc4d874471baa56a" rel="stylesheet">
+@model List<EmployeeDirectory.Models.EmployeeModel>
+<style>
+
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    h1{
+        margin-top: 1em;
+        text-align: center;
+        color: #394347;
+        font-family: font92774;
+        padding: 1.25em;
+    }
+
+
+    table tr td {
+        padding: 0.5em;
+        border: 1px solid #394347;
+        background-color: #394347;
+        color: #F7F410;
+        font-weight: bolder;
+        padding: 0.5em;
+        font-size: 1.25em;
+    }
+
+    .save {
+        background-color: #394347;
+        border-radius: 25px;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.75em;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: block;
+        margin: 0 auto;
+        opacity: 0.5;
+        font-weight: bolder;
+        text-decoration: none;
+        border-style: hidden;
+        margin-top:1.25em;
+        /*Transition*/
+        -webkit-transition: all 1.5s ease;
+        -moz-transition: all 1.5s ease;
+        -o-transition: all 1.5s ease;
+        height: 40px;
+        width: 125px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+    }
+
+        .save:hover {
+            background-color: #394347;
+            color: #F7F410;
+            opacity: 1;
+            -webkit-box-shadow: 0px 0px 20px#393e41(255,255,255,0.8);
+            -moz-box-shadow: 0px 0px 20px#393e41(255,255,255,0.8);
+            box-shadow: 0px 0px 20px#393e41(255,255,255,0.8);
+        }
+
+
+    .employee-container {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<div class="employee-container">
+<h1>Add Employee</h1>
+<form action="/Methods/Insert" method="post">
+    <table>
+        <tr>
+            <td>Employee ID: </td>
+            <td><input type="text" name="EmployeeID" /></td>
+        </tr>
+        <tr>
+            <td>Employee Name: </td>
+            <td><input type="text" name="EmployeeName" /></td>
+        </tr>
+        <tr>
+            <td>Job Title</td>
+            <td><input type="text" name="JobTitle" /></td>
+        </tr>
+        <tr>
+            <td>Work Place: </td>
+            <td><input type="text" name="WorkPlace" /></td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td><input type="text" name="Email" /></td>
+        </tr>
+        <tr>
+            <td>Phone Number: </td>
+            <td><input type="text" name="PhoneNumber" /></td>
+        </tr>
+    </table>
+    <input class="save" type="submit" value="Save" />
+</form>
+</div>
