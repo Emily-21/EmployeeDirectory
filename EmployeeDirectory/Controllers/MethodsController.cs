@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace EmployeeDirectory.Controllers
@@ -24,6 +25,7 @@ namespace EmployeeDirectory.Controllers
         {
             return View();
         }
+
 
         public ActionResult Login(string Email, string Password)
         {
@@ -60,19 +62,17 @@ namespace EmployeeDirectory.Controllers
                         // model = list and adds employeeDetails to a list format
                         //model.Add(employeeLogin);
 
-
-                        if (employeeLogin != null)
+                        
+                        if (employeeLogin == null)
                         {
-                            connection.Close();
-                            return RedirectToAction("Select");
-
+                            ViewBag.error = "Error";
                         }
                         else
                         {
-
-                            return View();
-
+                            return RedirectToAction("Select");
                         }
+               
+
                     }
                     return View();
 
