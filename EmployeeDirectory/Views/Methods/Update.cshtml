@@ -13,6 +13,7 @@
 <style>
 
 
+
     * {
         padding: 0;
         margin: 0;
@@ -82,9 +83,51 @@
         margin-left: auto;
         margin-right: auto;
     }
+
+    .return {
+        align-content: center;
+        margin-top: 2em;
+        margin-left: 1em;
+        background-color: #394347;
+        border-radius: 25px;
+        color: #fff;
+        font-family: font92774;
+        font-size: 1.25em;
+        text-align: center;
+        justify-content: start;
+        opacity: 0.5;
+        font-weight: bolder;
+        text-decoration: none;
+        border-style: hidden;
+        /*Transition*/
+        -webkit-transition: all 1.5s ease;
+        -moz-transition: all 1.5s ease;
+        -o-transition: all 1.5s ease;
+        height: 40px;
+        width: 125px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+    }
+
+    .divider {
+        padding: 2em;
+    }
+
+    .return:hover {
+        background-color: #394347;
+        color: #F7F410;
+        opacity: 1;
+        -webkit-box-shadow: 0px 0px 20px#393e41(255,255,255,0.8);
+        -moz-box-shadow: 0px 0px 20px#393e41(255,255,255,0.8);
+        box-shadow: 0px 0px 20px#393e41(255,255,255,0.8);
+    }
 </style>
 
 <div class="employee-container">
+    <form action="/Methods/Select" method="get">
+        <button class="return">Return</button>
+    </form>
     <h1>Update Employee Details</h1>
     <form action="/Methods/Update" method="post">
         <table>
@@ -112,8 +155,11 @@
                 <td>Phone Number: </td>
                 <td><input type="text" name="PhoneNumber" /></td>
             </tr>
-            </table>
+        </table>
         <input class="save" type="submit" value="Save" />
     </form>
-    </div>
+</div>
+
+<br>
+
 <p>@ViewBag.errorMsg</p>

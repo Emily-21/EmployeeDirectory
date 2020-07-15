@@ -153,14 +153,24 @@ namespace EmployeeDirectory.Controllers
                 {
                     while (reader.Read())
                     {
-                        employeeDetails.EmployeeID += (int)reader["EmployeeID"];
-                        employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
-                        employeeDetails.JobTitle += reader["JobTitle"].ToString();
-                        employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
-                        employeeDetails.Email += reader["Email"].ToString();
-                        employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
-                        //Console.WriteLine(employeeDetails);
-                        model.Add(employeeDetails);
+                        int ID = (int)reader["EmployeeID"];
+                        if (ID != EmployeeID)
+                        {
+                            return RedirectToAction("Select");
+                        }
+
+                        else
+                        {
+                            employeeDetails.EmployeeID += (int)reader["EmployeeID"];
+                            employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
+                            employeeDetails.JobTitle += reader["JobTitle"].ToString();
+                            employeeDetails.WorkPlace += reader["WorkPlace"].ToString();
+                            employeeDetails.Email += reader["Email"].ToString();
+                            employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
+                            //Console.WriteLine(employeeDetails);
+                            model.Add(employeeDetails);
+                        }
+                        
                     }
                     connection.Close();
                     return View(model);
