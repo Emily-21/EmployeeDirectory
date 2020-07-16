@@ -149,19 +149,19 @@
             <th>Phone Number </th>
             <th>HR Action</th>
         </tr>
-        @foreach (var employeeDetails in Model)
+        @*foreach (var employeeDetails in Model)
         {
-            // this calls 'employeeDetails' from MethodsController
-            <tr>
-                <td>@employeeDetails.EmployeeID</td>
-                <td>@employeeDetails.EmployeeName</td>
-                <td>@employeeDetails.JobTitle</td>
-                <td>@employeeDetails.WorkPlace</td>
-                <td>@employeeDetails.Email</td>
-                <td>@employeeDetails.PhoneNumber</td>
-                <td class="delete">@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td> @*Calling Delete variable and assigns it to Employee ID in the DataBase*@
+        // this calls 'employeeDetails' from MethodsController
+        <tr>
+            <td>@employeeDetails.EmployeeID</td>
+            <td>@employeeDetails.EmployeeName</td>
+            <td>@employeeDetails.JobTitle</td>
+            <td>@employeeDetails.WorkPlace</td>
+            <td>@employeeDetails.Email</td>
+            <td>@employeeDetails.PhoneNumber</td>
+            <td class="delete">@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td> @*Calling Delete variable and assigns it to Employee ID in the DataBase
 
-            </tr>
+        </tr>*@
         }
     </table>
 </div>
@@ -169,5 +169,8 @@
         <form action="/Methods/Select" method="get">
             <button class="return">Return</button>
         </form>
+        <p>
+            @ViewBag.NoID
+        </p>
     }
 

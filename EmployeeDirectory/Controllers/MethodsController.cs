@@ -151,16 +151,10 @@ namespace EmployeeDirectory.Controllers
                 var model = new List<EmployeeDirectory.Models.EmployeeModel>();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    while (reader.Read())
-                    {
-                        int ID = (int)reader["EmployeeID"];
-                        if (ID != EmployeeID)
-                        {
-                            return RedirectToAction("Select");
-                        }
 
-                        else
+                        while (reader.Read())
                         {
+                            
                             employeeDetails.EmployeeID += (int)reader["EmployeeID"];
                             employeeDetails.EmployeeName += reader["EmployeeName"].ToString();
                             employeeDetails.JobTitle += reader["JobTitle"].ToString();
@@ -169,11 +163,20 @@ namespace EmployeeDirectory.Controllers
                             employeeDetails.PhoneNumber += reader["PhoneNumber"].ToString();
                             //Console.WriteLine(employeeDetails);
                             model.Add(employeeDetails);
-                        }
-                        
+
+                            if (EmployeeID == 10)
+                            {
+                            ViewBag.NoID = ("Error");
+                            return View();
+                            }
+                            else
+                            {
+                                connection.Close();
+                                return View(model);
+                            }
+
                     }
-                    connection.Close();
-                    return View(model);
+                    return View();
                 }
             }
         }
