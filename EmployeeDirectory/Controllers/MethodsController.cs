@@ -160,16 +160,10 @@ namespace EmployeeDirectory.Controllers
                             //Console.WriteLine(employeeDetails);
                             model.Add(employeeDetails);
 
-                            if (EmployeeID == 10)
-                            {
-                            ViewBag.NoID = ("Error");
-                            return View();
-                            }
-                            else
-                            {
+                            
                                 connection.Close();
                                 return View(model);
-                            }
+                            
 
                     }
                     return View();

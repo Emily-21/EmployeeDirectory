@@ -132,7 +132,7 @@
 
     <div class="search-container">
         <form action="/Methods/Search">
-            <input type="text" placeholder="Search Employee..." name="employeeDetails">
+            <input type="text" placeholder="Search Employee..." name="EmployeeID">
             <button type="submit" asp-area="" asp-controller="Methods" asp-action="Search" asp-route-EmployeeID="">Submit</button>
         </form>
     </div>
@@ -169,8 +169,5 @@
         <form action="/Methods/Select" method="get">
             <button class="return">Return</button>
         </form>
-        <p>
-            @ViewBag.NoID
-        </p>
     }
 
