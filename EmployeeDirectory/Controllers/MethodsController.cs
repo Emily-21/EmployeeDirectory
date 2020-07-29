@@ -20,7 +20,6 @@ namespace EmployeeDirectory.Controllers
             return View();
         }
 
-
         public IActionResult Update()
         {
             return View();
@@ -186,7 +185,6 @@ namespace EmployeeDirectory.Controllers
             EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
             string newConnection = connectionString.connectionString;
     
-
             var employeeDetails = new EmployeeDirectory.Models.EmployeeModel();
 
             string DELETE = $"DELETE FROM StaffModel WHERE EmployeeID={EmployeeID}";
@@ -230,9 +228,6 @@ namespace EmployeeDirectory.Controllers
 
             EmployeeDirectory.Methods.Connection connectionString = new EmployeeDirectory.Methods.Connection();
             string newConnection = connectionString.connectionString;
-           
-
-       
 
             string INSERT = $"INSERT INTO StaffModel VALUES ({EmployeeID}, '{EmployeeName}', '{JobTitle}', '{WorkPlace}', '{Email}', '{PhoneNumber}')";
 
