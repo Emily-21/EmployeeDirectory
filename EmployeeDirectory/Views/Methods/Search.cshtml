@@ -4,7 +4,7 @@
 // this calls 'model' from MethodsController
     @model List<EmployeeDirectory.Models.EmployeeModel>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link Href="https://www.fontify.me/wf/f6e2e931edd4f5a2fc4d874471baa56a" rel="stylesheet">
+    <link href="https://blogfonts.com/css/aWQ9MTIyNjAwJnN1Yj02MDAmYz1hJnR0Zj1BUkxSREJELnR0ZiZuPWFyaWFsLXJvdW5kZWQtbXQtYm9sZA/Arial Rounded MT Bold.ttf" rel="stylesheet" type="text/css" />
 
     <style>
 
@@ -93,7 +93,7 @@
             background-color: #394347;
             border-radius: 25px;
             color: #fff;
-            font-family: font92774;
+            font-family: 'arial-rounded-mt-bold', sans-serif;
             font-size: 1.5em;
             text-align: center;
             justify-content: center;
@@ -149,7 +149,7 @@
             <th>Phone Number </th>
             <th>HR Action</th>
         </tr>
-        @*foreach (var employeeDetails in Model)
+        @foreach (var employeeDetails in Model)
         {
         // this calls 'employeeDetails' from MethodsController
         <tr>
@@ -159,9 +159,9 @@
             <td>@employeeDetails.WorkPlace</td>
             <td>@employeeDetails.Email</td>
             <td>@employeeDetails.PhoneNumber</td>
-            <td class="delete">@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td> @*Calling Delete variable and assigns it to Employee ID in the DataBase
+            <td class="delete">@Html.ActionLink("Delete", "Delete", new { EmployeeID = employeeDetails.EmployeeID })</td> @*Calling Delete variable and assigns it to Employee ID in the DataBase*@
 
-        </tr>*@
+        </tr>
         }
     </table>
 </div>

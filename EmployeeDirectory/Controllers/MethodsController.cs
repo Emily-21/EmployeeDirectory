@@ -42,45 +42,42 @@ namespace EmployeeDirectory.Controllers
             SqlConnection connection = new SqlConnection(newConnection);
             using (connection)
             {
-                // taking the command 'SELECT' from database and applying it here 
+ 
                 SqlCommand cmd = new SqlCommand(SELECT, connection);
-                // opening the connection to allow data to pass
                 connection.Open();
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
+
                     while (reader.Read())
                     {
 
                         var employeeLogin = new EmployeeDirectory.Models.EmployeeLogin();
-                        // where is this coming from? Models Folder/EmployeeModel Class
-                        // creating a new variable, 'employeeDetails', that passes values for the list.
 
                         employeeLogin.Email = reader["Email"].ToString();
                         employeeLogin.Password = reader["Password"].ToString();
 
-                        // model = list and adds employeeDetails to a list format
-                        //model.Add(employeeLogin);
 
-                        
                         if (employeeLogin == null)
                         {
                             ViewBag.error = "Error";
+                            return View();
+
                         }
                         else
                         {
                             return RedirectToAction("Select");
                         }
-               
-
                     }
                     return View();
 
                 }
-
-
             }
         }
+
+
+            
+        
 
 
 
@@ -282,8 +279,6 @@ namespace EmployeeDirectory.Controllers
                     SqlCommand cmd = new SqlCommand(UPDATE, connection);
                     connection.Open();
 
-
-
                     cmd.Parameters.AddWithValue("EmployeeID", EmployeeID);
                     cmd.Parameters.AddWithValue("EmployeeName", EmployeeName);
                     cmd.Parameters.AddWithValue("JobTitle", JobTitle);
@@ -294,6 +289,8 @@ namespace EmployeeDirectory.Controllers
                     cmd.ExecuteNonQuery();
 
                     return RedirectToAction("Select");
+
+
                 }
               
             }

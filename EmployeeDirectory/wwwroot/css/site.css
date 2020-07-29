@@ -1,5 +1,5 @@
 ﻿
-@import url('https://www.fontify.me/wf/f6e2e931edd4f5a2fc4d874471baa56a');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 
@@ -13,8 +13,7 @@ nav a {
     text-decoration: none;
 }
 .navbar-brand {
-  
-    font-family: font92774;
+    font-family: 'Varela Round', sans-serif;
     font-size: 1.5em;
     color: white;
 }
